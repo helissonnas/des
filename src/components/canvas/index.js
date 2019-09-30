@@ -1,4 +1,8 @@
 import React from 'react';
+import CanvasSettings from './canvasSettings';
+
+import Layouts from './Layouts.const';
+import Fonts from './Fonts.const';
 
 class Canvas extends React.Component {
   constructor(props) {
@@ -7,14 +11,13 @@ class Canvas extends React.Component {
     this.state = {
       bg_url: null,
       logo_url: null,
-      logo_load: false
+      logo_load: false,
+      layout: Layouts.Post,
+      font: Fonts.Roboto
     };
 
     this._changeImg = this._changeImg.bind(this);
-  }
-
-  componentDidMount() {
-    this._changeImg();
+    this.setValue = this.setValue.bind(this);
   }
 
   _changeImg() {
@@ -39,49 +42,48 @@ class Canvas extends React.Component {
     };
   }
 
+  setValue(key, value) {
+    switch (key) {
+      case 'bg_url':
+        this.setState({ bg_url: value });
+        break;
+      case 'logo_url':
+        this.setState({ logo_url: value });
+        break;
+      case 'layout':
+        this.setState({ layout: value });
+        break;
+      case 'font':
+        this.setState({ font: value });
+        break;
+      default:
+        break;
+    }
+  }
+
   render() {
     return (
       <div>
-        <div>
-          <div>
-            <label for='bg-input'>Background</label>
-            <input
-              id='bg-input'
-              type='text'
-              value={this.state['bg_url']}
-              onChange={e => {
-                this.setState({ bg_url: e.target.value });
-              }}
-            />
-
-            <label for='logo-input'>Logo</label>
-            <input
-              id='logo-input'
-              type='text'
-              value={this.state['logo_url']}
-              onChange={e => {
-                this.setState({ logo_url: e.target.value });
-              }}
-            />
-            <button
-              onClick={e => {
-                e.preventDefault();
-                this._changeImg();
-              }}
-            >
-              Criar imagem
-            </button>
-          </div>
-        </div>
+        <CanvasSettings
+          bg_url={this.state.bg_url}
+          logo_url={this.state.logo_url}
+          layout={this.state.layout}
+          font={this.state.font}
+          setValue={this.setValue}
+        />
+        <button
+          onClick={e => {
+            e.preventDefault();
+            this._changeImg();
+          }}
+        >
+          Criar imagem
+        </button>
         <canvas id='myCanvas' width='500' height='510'>
           Your browser does not support the canvas element.
         </canvas>
       </div>
     );
-  }
-
-  getValue(key) {
-    return this.state[key];
   }
 }
 
