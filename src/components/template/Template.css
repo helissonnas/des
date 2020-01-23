@@ -9,3 +9,13 @@
  .ant-layout-header {
    background: white !important;
  }
+
+ .ant-menu-horizontal>.ant-menu-item-selected {
+   color: #252525 !important;
+   border-bottom: 2px solid #363636 !important;
+ }
+
+ .ant-menu-horizontal>.ant-menu-item-selected>a {
+   color: #252525 !important;
+   font-weight: 500;
+ }

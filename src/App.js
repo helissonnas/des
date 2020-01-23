@@ -19,8 +19,10 @@ function App() {
     <Router history={browserHistory}>
       <Template>
         <Switch>
-          <Route components={Projects} path={UrlPaths.projects} />
-          <Route components={Settings} path={UrlPaths.settings} />
+          <>
+            <Route components={Projects} exact path={UrlPaths.projects} />
+            <Route components={Settings} exact path={UrlPaths.settings} />
+          </>
         </Switch>
       </Template>
     </Router>
