@@ -4,13 +4,19 @@ import CanvasSettings from './canvasSettings';
 import Layouts from './Layouts.const';
 import Fonts from './Fonts.const';
 
+const dimensions = [
+  { width: 250, height: 250 },
+  { width: 250, height: 325 },
+  { width: 250, height: 450 }
+];
+
 class Canvas extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      bg_url: null,
-      logo_url: null,
+      bg_url: '',
+      logo_url: '',
       logo_load: false,
       layout: Layouts.Post,
       font: Fonts.Roboto
@@ -59,6 +65,8 @@ class Canvas extends React.Component {
       default:
         break;
     }
+
+    this._changeImg();
   }
 
   render() {
@@ -79,7 +87,11 @@ class Canvas extends React.Component {
         >
           Criar imagem
         </button>
-        <canvas id='myCanvas' width='500' height='510'>
+        <canvas
+          id='myCanvas'
+          width={dimensions[this.state.layout].width}
+          height={dimensions[this.state.layout].height}
+        >
           Your browser does not support the canvas element.
         </canvas>
       </div>

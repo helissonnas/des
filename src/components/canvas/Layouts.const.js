@@ -1,7 +1,7 @@
 const Layouts = {
-  Post: 1,
-  Promo: 2,
-  Storie: 3
+  Post: 0,
+  Promo: 1,
+  Storie: 2
 };
 
 export default Layouts;

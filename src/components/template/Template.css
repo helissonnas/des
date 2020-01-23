@@ -1,0 +1,11 @@
+ div.logo {
+   width: 31px;
+   height: 31px;
+   margin: 16px 24px 16px 0;
+   float: left;
+   content: url(../../assets/logo_small.png);
+ }
+
+ .ant-layout-header {
+   background: white !important;
+ }

@@ -54,11 +54,11 @@ class CanvasSettings extends React.Component {
           value={this.props.layout}
           onChange={e => {
             e.preventDefault();
-            this.props.setValue('layout', e.target.value);
+            this.props.setValue('layout', Number.parseInt(e.target.value));
           }}
         >
           {this.layoutsList.map((layoutName, idx) => (
-            <option value={idx + 1} key={layoutName + idx}>
+            <option value={idx} key={layoutName + idx}>
               {layoutName}
             </option>
           ))}
