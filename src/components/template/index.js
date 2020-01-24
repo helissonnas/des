@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import UrlPaths from '../../constants/UrlPaths';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Template.css';
 
 const { Header, Content, Footer } = Layout;
@@ -29,11 +29,11 @@ class Template extends React.Component {
             </Menu.Item>
           </Menu>
         </Header>
+
         <Content style={{ padding: '0 50px' }}>
-          <div style={{ padding: 24, minHeight: '80vh' }}>
-            {this.props.children}
-          </div>
+          <div style={{ padding: 24 }}>{this.props.children}</div>
         </Content>
+
         <Footer style={{ textAlign: 'center' }}>
           Des ©2020 Beautifully simple.
         </Footer>
@@ -42,4 +42,4 @@ class Template extends React.Component {
   }
 }
 
-export default withRouter(Template);
+export default Template;

@@ -14,19 +14,17 @@ import './App.css';
 
 const browserHistory = createBrowserHistory();
 
-function App() {
+const App = () => {
   return (
     <Router history={browserHistory}>
       <Template>
         <Switch>
-          <>
-            <Route components={Projects} exact path={UrlPaths.projects} />
-            <Route components={Settings} exact path={UrlPaths.settings} />
-          </>
+          <Route component={Projects} exact path={UrlPaths.projects} />
+          <Route component={Settings} exact path={UrlPaths.settings} />
         </Switch>
       </Template>
     </Router>
   );
-}
+};
 
 export default App;

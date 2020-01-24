@@ -1,4 +1,4 @@
-import Model from '../__interface__/Model';
+import Model from '../__interfaces__/Model';
 
 class ProjectModel extends Model {
   id = '';

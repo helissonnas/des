@@ -1,4 +1,4 @@
-import Service from '../__interface__/Service';
+import Service from '../__interfaces__/Service';
 import ApiEndPoints from '../../constants/ApiEndPoints';
 
 class ProjectService extends Service {

@@ -3,7 +3,8 @@ import { Card } from 'antd';
 
 class ProjectCard extends React.Component {
   render() {
-    return <Card>proj</Card>;
+    console.log(this.props.project);
+    return <Card>{this.props.project.name}</Card>;
   }
 }
 
