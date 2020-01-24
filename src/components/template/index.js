@@ -15,7 +15,7 @@ class Template extends React.Component {
           <Menu
             theme='light'
             mode='horizontal'
-            defaultSelectedKeys={['project']}
+            defaultSelectedKeys={['projects ']}
             style={{ lineHeight: '64px' }}
           >
             <Menu.Item key='projects'>
