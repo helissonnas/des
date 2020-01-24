@@ -1,5 +1,6 @@
 import axios from 'axios';
 import ApiEndPoints from '../../constants/ApiEndPoints';
+
 class Service {
   endPoint = null;
 

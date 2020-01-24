@@ -1,5 +1,12 @@
 import Service from '../__interface__/Service';
+import ApiEndPoints from '../../constants/ApiEndPoints';
 
-class ProjectService extends Service {}
+class ProjectService extends Service {
+  constructor() {
+    super(ApiEndPoints.projects);
+  }
+}
 
-export default ProjectService;
+const instance = new ProjectService();
+
+export default instance;
