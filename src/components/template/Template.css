@@ -1,21 +1,26 @@
- div.logo {
-   width: 31px;
-   height: 31px;
-   margin: 16px 24px 16px 0;
-   float: left;
-   content: url(../../assets/logo_small.png);
- }
+div.logo {
+  width: 31px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  float: left;
+  content: url(../../assets/logo_small.png);
+}
 
- .ant-layout-header {
-   background: white !important;
- }
+.ant-layout-header {
+  background: white !important;
+}
 
- .ant-menu-horizontal>.ant-menu-item-selected {
-   color: #252525 !important;
-   border-bottom: 2px solid #363636 !important;
- }
+.ant-menu-horizontal > .ant-menu-item-selected {
+  color: #252525 !important;
+  border-bottom: 2px solid #363636 !important;
+}
 
- .ant-menu-horizontal>.ant-menu-item-selected>a {
-   color: #252525 !important;
-   font-weight: 500;
- }
+.ant-menu-horizontal > .ant-menu-item-selected > a {
+  color: #252525 !important;
+  font-weight: 500;
+}
+
+.ant-menu-horizontal > .ant-menu-item:hover {
+  color: #b195a4;
+  border-bottom: 2px solid #b195a4 !important;
+}

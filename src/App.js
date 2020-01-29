@@ -11,6 +11,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import UrlPaths from './constants/UrlPaths';
 
 import './App.css';
+import ProjectForm from './pages/projects/form';
 
 const browserHistory = createBrowserHistory();
 
@@ -20,6 +21,11 @@ const App = () => {
       <Template>
         <Switch>
           <Route component={Projects} exact path={UrlPaths.projects} />
+          <Route
+            component={ProjectForm}
+            exact
+            path={UrlPaths.project + '/' + ':id'}
+          />
           <Route component={Settings} exact path={UrlPaths.settings} />
         </Switch>
       </Template>

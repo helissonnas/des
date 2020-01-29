@@ -1,8 +1,9 @@
 const urls = {
-  projects: '/',
-  login: '/login',
-  settings: '/settings',
-  payments: '/payment'
+  projects: "/",
+  project: "/project",
+  login: "/login",
+  settings: "/settings",
+  payments: "/payments"
 };
 
 export default urls;

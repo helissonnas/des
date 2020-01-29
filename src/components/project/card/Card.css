@@ -1,0 +1,8 @@
+.project-card {
+  cursor: pointer;
+}
+.project-card:hover {
+  -webkit-box-shadow: 2px 2px 1.5px -1px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 2px 2px 1.5px -1px rgba(0, 0, 0, 0.08);
+  box-shadow: 2px 2px 1.5px -1px rgba(0, 0, 0, 0.08);
+}

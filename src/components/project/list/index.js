@@ -4,34 +4,34 @@ import ProjectModel from '../ProjectModel';
 import ProjectCard from '../card';
 
 const projs_mock = [
-  new ProjectModel({
+  {
     id: 'wewe',
     name: 'Project 1',
     layout: 0,
     components: [],
-    background: 'https://images.pexels.com/photos/1227520/pexels-photo-122752'
-  }),
-  new ProjectModel({
+    background: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDsp7-sF6INZfYxQ7FYRhrokEyyD7fVJFBEDwXYi2LrfrsJq4Q'
+  },
+  {
     id: 'wewe',
     name: 'Project 1',
     layout: 0,
     components: [],
-    background: 'https://images.pexels.com/photos/1227520/pexels-photo-122752'
-  }),
-  new ProjectModel({
+    background: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDsp7-sF6INZfYxQ7FYRhrokEyyD7fVJFBEDwXYi2LrfrsJq4Q'
+  },
+  {
     id: 'wewe',
     name: 'Project 1',
     layout: 0,
     components: [],
-    background: 'https://images.pexels.com/photos/1227520/pexels-photo-122752'
-  }),
-  new ProjectModel({
+    background: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDsp7-sF6INZfYxQ7FYRhrokEyyD7fVJFBEDwXYi2LrfrsJq4Q'
+  },
+  {
     id: 'wewe',
     name: 'Project 1',
     layout: 0,
     components: [],
-    background: 'https://images.pexels.com/photos/1227520/pexels-photo-122752'
-  })
+    background: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDsp7-sF6INZfYxQ7FYRhrokEyyD7fVJFBEDwXYi2LrfrsJq4Q'
+  }
 ];
 
 class ProjectList extends React.Component {

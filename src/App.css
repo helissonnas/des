@@ -1,2 +1,20 @@
-@import '~antd/dist/antd.css';
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
+@import "~antd/dist/antd.css";
+
+a:hover {
+  color: #8d7e9e !important;
+}
+
+.ant-pagination-item-active a {
+  color: #8d7e9e !important;
+}
+
+.ant-pagination-item-active {
+  font-weight: 500;
+  background: #fff;
+  border-color: #b195a4 !important;
+}
+
+.ant-pagination-item-active:hover {
+  border-color: #8d7e9e !important;
+}
