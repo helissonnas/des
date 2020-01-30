@@ -15,10 +15,10 @@ class Template extends React.Component {
           <Menu
             theme='light'
             mode='horizontal'
-            defaultSelectedKeys={['projects ']}
+            selectedKeys={[window.location.pathname.split('/')[1]]}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key='projects'>
+            <Menu.Item key='project'>
               <Link to={UrlPaths.projects}>Projetos</Link>
             </Menu.Item>
             <Menu.Item key='settings'>

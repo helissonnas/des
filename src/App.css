@@ -1,5 +1,5 @@
-@import "~antd/dist/antd.css";
-@import "~antd/dist/antd.css";
+@import '~antd/dist/antd.css';
+@import '~antd/dist/antd.css';
 
 a:hover {
   color: #8d7e9e !important;
@@ -17,4 +17,41 @@ a:hover {
 
 .ant-pagination-item-active:hover {
   border-color: #8d7e9e !important;
+}
+
+.ant-steps-item-process .ant-steps-item-icon {
+  background: #b195a4 !important;
+  border-color: #8d7e9e !important;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #fff;
+  border-color: #8d7e9e;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+  color: #8d7e9e !important;
+}
+
+.ant-steps-item-container .ant-steps-item-tail {
+  color: #8d7e9e !important;
+}
+
+.ant-btn-primary {
+  background-color: #8d7e9e;
+  border-color: #74708e;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  color: #fff;
+  background-color: #b195a4;
+  border-color: #b195a4;
+}
+
+.ant-btn:hover,
+.ant-btn:focus {
+  color: #b195a4;
+  background-color: #fff;
+  border-color: #b195a4;
 }
