@@ -5,7 +5,13 @@
 }
 
 .selected {
-  border: 2px solid #ca3a4e;
+  position: absolute;
+  border-radius: 10rem;
+  background-color: #e63d51;
+  width: 15px;
+  height: 15px;
+  top: 3px;
+  left: -6px;
 }
 
 .post-type > img {
@@ -17,12 +23,15 @@
 
 .post-type > span {
   position: absolute;
+  display: flex;
+  margin-left: 2px;
   top: 8px;
   left: 8px;
-  font-size: large;
+  font-size: x-large;
   color: whitesmoke;
   font-weight: bolder;
-  text-shadow: 2px 2px #00000033;
+  text-shadow: 2px 2px #0000006b;
+  width: 100%;
 }
 
 .form-search {

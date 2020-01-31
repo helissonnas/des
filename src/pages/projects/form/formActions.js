@@ -40,12 +40,12 @@ const types = [
 const Type = props => {
   return (
     <Row>
-      <div
-        className={`post-type ${props.selected ? 'selected' : ''}`}
-        onClick={() => props.select(props.type.key)}
-      >
+      <div className={`post-type`} onClick={() => props.select(props.type.key)}>
         <img src={props.type.src} alt='Capa do tipo' />
-        <span>{props.type.name}</span>
+        <span>
+          {props.selected && <div class='selected'></div>}
+          {props.type.name}
+        </span>
       </div>
     </Row>
   );
