@@ -1,55 +1,60 @@
 import React from 'react';
 
-import { Steps, Button, message, Card, Row, Form, Input } from 'antd';
+import { Steps, Button, message, Card, Form, Input } from 'antd';
 
 import './FormActions.css';
+import ThemeForm from './formAction/themeForm';
+import TypeForm from './formAction/typeForm';
+import PostForm from './formAction/postForm';
 
 const { Step } = Steps;
 
-const types = [
+const themes = [
   {
-    name: 'Post promovido no Instagram',
-    key: 'insta-post-prom',
-    description: 'Post promovido no Instagram',
+    key: 'office-formal',
+    title: 'Escritório Formal',
     src:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGR9UsB5nJ8eQg3J8lX3SM7FA-KcwXQ4CXHOkNXWlTYfgLeBYw'
+      'https://www.veroniquesophie.com/wp-content/uploads/2016/03/FullSizeRender-2.jpg',
+    keywords: [
+      'escritorio',
+      'advocacia',
+      'imobiliaria',
+      'formal',
+      'empresa',
+      'direito'
+    ]
   },
   {
-    name: 'Stories no Instagram',
-    key: 'insta-post-stories',
-    description: 'Post para storie do Instagram',
+    key: 'personal-development',
+    title: 'Desenvolvimento Pessoal',
     src:
-      'https://www.smallbizgenius.net/wp-content/uploads/2019/06/influencer-marketing-statistics.png'
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSu7T9ZFr0puId890MCOT2T_Wv4k_ThjlsJV9DsG4Rj5lEuHBLC',
+    keywords: [
+      'mentoria',
+      'coach',
+      'yoga',
+      'personal',
+      'aula',
+      'ensino',
+      'revisao'
+    ]
   },
   {
-    name: 'Post para feed de Instagram',
-    key: 'insta-post-feed',
-    description: 'Post para o feed do Instagram',
+    key: 'health',
+    title: 'Saúde e Cuidado',
     src:
-      'https://www.success.com/wp-content/uploads/2019/12/5-Tips-to-Become-a-Micro-Influencer.jpg'
-  },
-  {
-    name: 'Post para Facebook',
-    key: 'insta-post-facebook',
-    description: 'Post para o feed do Facebook',
-    src:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRqwj12-581T1rl0uO5xViAhoS3krzEsqCbXd8eIYTWEndQxnBB'
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSlpHURpmOg1IROaWW5Q8qgUXLakcvFpQXwpKFwQEVa6T9Yb-po',
+    keywords: [
+      'saude',
+      'medicina',
+      'odontologia',
+      'nutricao',
+      'consultorio',
+      'farmacia',
+      'fisioterapia'
+    ]
   }
 ];
-
-const Type = props => {
-  return (
-    <Row>
-      <div className={`post-type`} onClick={() => props.select(props.type.key)}>
-        <img src={props.type.src} alt='Capa do tipo' />
-        <span>
-          {props.selected && <div class='selected'></div>}
-          {props.type.name}
-        </span>
-      </div>
-    </Row>
-  );
-};
 
 class FormActions extends React.Component {
   constructor(props) {
@@ -58,10 +63,13 @@ class FormActions extends React.Component {
     this.state = {
       name: 'Novo Projeto',
       description: '',
-      type: null
+      theme: '',
+      type: null,
+      themesArray: themes
     };
 
-    this.select = this.select.bind(this);
+    this.selectTheme = this.selectTheme.bind(this);
+    this.selectType = this.selectType.bind(this);
   }
 
   next() {
@@ -84,8 +92,18 @@ class FormActions extends React.Component {
     });
   }
 
-  select(key) {
+  selectType(key) {
     this.setState({ type: key });
+  }
+
+  selectTheme(key) {
+    this.setState({ theme: key });
+  }
+
+  searchTheme(value) {
+    this.setState({
+      themesArray: themes.filter(th => !!th.keywords.find(key => key === value))
+    });
   }
 
   render() {
@@ -122,30 +140,30 @@ class FormActions extends React.Component {
         )
       },
       {
-        title: 'Tipo do Projeto',
+        title: 'Tema',
         content: (
-          <>
-            <Input.Search
-              placeholder='Buscar tipo'
-              className='form-search'
-              onSearch={value => console.log(value)}
-            />
-            {types.map(type => (
-              <Type
-                key={type.key}
-                type={type}
-                selected={
-                  this.state.type ? this.state.type === type.key : false
-                }
-                select={this.select}
-              />
-            ))}
-          </>
+          <ThemeForm
+            theme={this.state.theme}
+            themesArray={this.state.themesArray}
+            selectTheme={this.selectTheme}
+            searchTheme={this.selectTheme}
+          />
         )
       },
       {
-        title: 'Last',
-        content: 'Last-content'
+        title: 'Tipo do Projeto',
+        content: (
+          <TypeForm type={this.state.type} selectType={this.selectType} />
+        )
+      },
+      {
+        title: 'Detalhes',
+        content: (
+          <PostForm
+            theme={this.state.theme}
+            getFieldDecorator={getFieldDecorator}
+          />
+        )
       }
     ];
 
@@ -156,11 +174,13 @@ class FormActions extends React.Component {
             <Step key={item.title} title={item.title} />
           ))}
         </Steps>
-        <Card style={{ margin: '16px 16px 16px 0' }}>
+
+        <Card style={{ margin: '16px 16px 16px 0', minHeight: '65vh' }}>
           <Form>
             <div className='steps-content'>{steps[current].content}</div>
           </Form>
         </Card>
+
         <div className='steps-action'>
           {current < steps.length - 1 && (
             <Button type='primary' onClick={() => this.next()}>

@@ -20,13 +20,13 @@ class ProjectForm extends React.Component {
   render() {
     return (
       <Row style={{ height: '75vh' }} gutter={16}>
-        <Col span={this.state.current < 2 ? 24 : 8}>
+        <Col span={this.state.current < 3 ? 24 : 12}>
           <FormActions
             current={this.state.current}
             updateCurrent={this.changeCurrent}
           />
         </Col>
-        <Col span={this.state.current < 2 ? 0 : 16}>
+        <Col span={this.state.current < 3 ? 0 : 12}>
           <Canvas />
         </Col>
       </Row>
