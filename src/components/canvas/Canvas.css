@@ -1,0 +1,11 @@
+.cell {
+  z-index: 1;
+  width: 45vh;
+  position: absolute;
+}
+#myCanvas {
+  top: 110px;
+  left: 51px;
+  z-index: 2;
+  position: absolute;
+}

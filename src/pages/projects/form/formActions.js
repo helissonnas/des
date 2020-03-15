@@ -9,69 +9,7 @@ import PostForm from './formAction/postForm';
 
 const { Step } = Steps;
 
-const themes = [
-  {
-    key: 'office-formal',
-    title: 'Escritório Formal',
-    src:
-      'https://www.veroniquesophie.com/wp-content/uploads/2016/03/FullSizeRender-2.jpg',
-    keywords: [
-      'escritorio',
-      'advocacia',
-      'imobiliaria',
-      'formal',
-      'empresa',
-      'direito'
-    ]
-  },
-  {
-    key: 'personal-development',
-    title: 'Desenvolvimento Pessoal',
-    src:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSu7T9ZFr0puId890MCOT2T_Wv4k_ThjlsJV9DsG4Rj5lEuHBLC',
-    keywords: [
-      'mentoria',
-      'coach',
-      'yoga',
-      'personal',
-      'aula',
-      'ensino',
-      'revisao'
-    ]
-  },
-  {
-    key: 'health',
-    title: 'Saúde e Cuidado',
-    src:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSlpHURpmOg1IROaWW5Q8qgUXLakcvFpQXwpKFwQEVa6T9Yb-po',
-    keywords: [
-      'saude',
-      'medicina',
-      'odontologia',
-      'nutricao',
-      'consultorio',
-      'farmacia',
-      'fisioterapia'
-    ]
-  }
-];
-
 class FormActions extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: 'Novo Projeto',
-      description: '',
-      theme: '',
-      type: null,
-      themesArray: themes
-    };
-
-    this.selectTheme = this.selectTheme.bind(this);
-    this.selectType = this.selectType.bind(this);
-  }
-
   next() {
     this.check(() => {
       const current = this.props.current + 1;
@@ -92,27 +30,13 @@ class FormActions extends React.Component {
     });
   }
 
-  selectType(key) {
-    this.setState({ type: key });
-  }
-
-  selectTheme(key) {
-    this.setState({ theme: key });
-  }
-
-  searchTheme(value) {
-    this.setState({
-      themesArray: themes.filter(th => !!th.keywords.find(key => key === value))
-    });
-  }
-
   render() {
     const { current } = this.props;
     const { getFieldDecorator } = this.props.form;
 
     const steps = [
       {
-        title: this.state.name,
+        title: this.props.name,
         content: (
           <>
             <Form.Item label='Nome do projeto'>
@@ -123,7 +47,7 @@ class FormActions extends React.Component {
                     message: 'Por favor, insira nome do projeto.'
                   }
                 ],
-                initialValue: this.state.name
+                initialValue: this.props.name
               })(<Input placeholder='Nome do projeto' />)}
             </Form.Item>
             <Form.Item label='Descrição'>
@@ -133,7 +57,7 @@ class FormActions extends React.Component {
                     message: 'Por favor, insira a descrição do projeto.'
                   }
                 ],
-                initialValue: this.state.description
+                initialValue: this.props.description
               })(<Input.TextArea placeholder='Descrição do projeto' />)}
             </Form.Item>
           </>
@@ -143,24 +67,24 @@ class FormActions extends React.Component {
         title: 'Tema',
         content: (
           <ThemeForm
-            theme={this.state.theme}
-            themesArray={this.state.themesArray}
-            selectTheme={this.selectTheme}
-            searchTheme={this.selectTheme}
+            theme={this.props.theme}
+            themesArray={this.props.themesArray}
+            selectTheme={this.props.selectTheme}
+            searchTheme={this.props.selectTheme}
           />
         )
       },
       {
         title: 'Tipo do Projeto',
         content: (
-          <TypeForm type={this.state.type} selectType={this.selectType} />
+          <TypeForm type={this.props.type} selectType={this.props.selectType} />
         )
       },
       {
         title: 'Detalhes',
         content: (
           <PostForm
-            theme={this.state.theme}
+            theme={this.props.theme}
             getFieldDecorator={getFieldDecorator}
           />
         )
@@ -188,10 +112,7 @@ class FormActions extends React.Component {
             </Button>
           )}
           {current === steps.length - 1 && (
-            <Button
-              type='primary'
-              onClick={() => message.success('Processing complete!')}
-            >
+            <Button type='primary' onClick={() => this.props.changeImg()}>
               Feito
             </Button>
           )}
